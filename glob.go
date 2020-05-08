@@ -1,4 +1,4 @@
-package util
+package yagu
 
 import (
 	"github.com/bmatcuk/doublestar"
