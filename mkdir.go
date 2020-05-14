@@ -3,14 +3,10 @@ package yagu
 import (
 	"fmt"
 	"os"
-	"path"
 )
 
-func Mkdir(filename string) error {
+func Mkdir(dir string) error {
 	var err error
-
-	// get directory from filename
-	dir := path.Dir(filename)
 
 	// Let's look for the directory
 	info, err := os.Lstat(dir)
