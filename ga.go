@@ -20,6 +20,17 @@ type GaConfig struct {
 	CM  string
 }
 
+// TODO... make this accurate, add a second function, make both funcs specialized
+// XXX see if we can find the API spec and reverse it into gocode
+type GaPageview struct {
+	Type string
+	Source string
+	Category string
+	Action string
+	Label string
+	Value int
+}
+
 type GaEvent struct {
 	Type string
 	Source string
@@ -52,8 +63,10 @@ func SendGaEvent(cfg GaConfig, evt GaEvent) (string, error) {
 	} else {
 		vals.Add("t", evt.Type)
 	}
+
+	// TODO, move this parameter hackery for CLIs to hofmod-cli
 	vals.Add("dh", cfg.UA)
-	vals.Add("dt", cfg.UA)
+	vals.Add("dt", cfg.CS)
 	vals.Add("dp", evt.Action)
 	vals.Add("v", "1")
 	if evt.Source != "" {
